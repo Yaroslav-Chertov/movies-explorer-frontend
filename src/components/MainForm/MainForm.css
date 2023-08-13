@@ -1,0 +1,129 @@
+.main-form {
+    padding: 70px 0;
+}
+
+.main-form__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 396px;
+    margin: 0 auto;
+}
+
+.main-form__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0 0 40px;
+}
+
+.main-form__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-form__label {
+    color: #8b8b8b;
+    display: block;
+    position: relative;
+    font-size: 10px;
+    line-height: normal;
+    margin-bottom: 10px;
+}
+
+.main-form__label:not(:last-of-type) {
+    margin-bottom: 24px;
+}
+
+.main-form__label:last-of-type {
+    margin-bottom: 221px;
+}
+
+.main-form__input {
+    background-color: #202020;
+    border: none;
+    border-bottom: 1px solid rgba(66, 66, 66, 1.0);
+    color: #fff;
+    display: block;
+    outline: transparent;
+    font-size: 14px;
+    width: 100%;
+    font-weight: 400;
+    line-height: normal;
+    padding: 5px 0 10px;
+}
+
+.main-form__input::placeholder {
+    color: #fff;
+}
+
+.main-form__submit {
+    background-color: #4285f4;
+    color: #FFF;
+    border-radius: 3px;
+    font-weight: 500;
+    width: 100%;
+    line-height: normal;
+    font-size: 14px;
+    margin-bottom: 16px;
+    padding: 13px 5px 15px 5px;
+}
+
+.main-form__answer {
+    color: #8b8b8b;
+    text-align: center;
+    line-height: normal;
+    margin: 0;
+}
+
+.main-form__sign {
+    color: #4285f4;
+}
+
+.input-error {
+    color: #ee3465;
+    display: block;
+    font-size: 10px;
+    line-height: normal;
+    min-height: 12px;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    margin-top: 10px;
+}
+
+.input-text-error {
+    color: #ee3465;
+}
+
+@media screen and (max-width: 768px) {
+    .main-form {
+        padding: 232px 0;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .main-form {
+        padding: 56px 30px 30px 30px;
+    }
+
+    .main-form__title {
+        text-align: center;
+        margin-bottom: 80px;
+    }
+
+    .main-form__label:last-of-type {
+        margin-bottom: 309px;
+    }
+
+    .main-form__submit {
+        font-size: 12px;
+        padding: 15px 5px 15px 5px;
+        margin-bottom: 14px;
+    }
+
+    .main-form__answer {
+        font-size: 12px;
+    }
+}

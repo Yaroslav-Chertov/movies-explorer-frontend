@@ -1,0 +1,119 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 80px);
+}
+
+.profile__greeting {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 123px;
+}
+
+.profile__form {
+    max-width: 410px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.profile__label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 500;
+    padding-bottom: 16px;
+}
+
+.profile__label:last-of-type {
+    margin-bottom: 220px;
+}
+
+.profile__label:not(:last-of-type) {
+    border-bottom: 1px solid #424242;
+    margin-bottom: 17px;
+}
+
+.profile__input {
+    color: #fff;
+    border: none;
+    background-color: transparent;
+    text-align: right;
+    font-weight: 400;
+    outline: transparent;
+    width: 80%;
+    padding: 0;
+}
+
+.profile__input::placeholder {
+    color: inherit;
+}
+
+.profile__logout,
+.profile__edit {
+    color: #FFF;
+    font-size: 13px;
+    line-height: normal;
+    background-color: #202020;
+    border: none;
+    padding: 0;
+}
+
+.profile__logout {
+    color: #ee3465;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+    .profile__label:last-of-type {
+        margin-bottom: 210px;
+    }
+
+    .profile__greeting {
+        margin-bottom: 96px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .profile {
+        justify-content: start;
+        margin: 236px 30px 0 30px;
+        padding: 0;
+    }
+
+    .profile__label:last-of-type {
+        margin-bottom: 210px;
+    }
+
+    .profile__logout,
+    .profile__edit {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    .profile {
+        margin: 70px 30px 0 30px;
+        padding: 0;
+    }
+
+    .profile__greeting {
+        margin-bottom: 80px;
+    }
+
+    .profile__label:last-of-type {
+        margin-bottom: 250px;
+    }
+
+    .profile__logout,
+    .profile__edit {
+        font-size: 12px;
+    }
+}
