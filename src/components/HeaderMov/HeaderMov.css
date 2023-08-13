@@ -1,0 +1,23 @@
+.header__movie-links {
+    margin-right: auto;
+}
+
+.header__movie-link {
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.header__movie-link.active {
+    font-weight: 500;
+}
+
+.header__movie-link:not(:last-child) {
+    margin-right: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    .header__movie-links {
+        display: none;
+    }
+}
