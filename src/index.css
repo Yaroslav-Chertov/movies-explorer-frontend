@@ -9,6 +9,7 @@
 @import url(./components/Interface/ProfileButton/ProfileButton.css);
 @import url(./components/Interface/SwitchToggle/SwitchToggle.css);
 @import url(./components/Interface/SwitchToggle/SwitchToggleMobile/SwitchToggleMobile.css);
+@import url(./components/Interface/MoreButton/MoreButton.css);
 
 @import url(./components/App/App.css);
 @import url(./components/Header/Header.css);

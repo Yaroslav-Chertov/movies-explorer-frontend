@@ -1,4 +1,4 @@
-export const SwitchToggleMobile = ({ position, name }) => {
+export const SwitchToggleMobile = ({ position, name, handleCheckbox, checkboxValue }) => {
     return (
         <div className={`switch-toggle switch-toggle_mobile ${position}`}>
             <label
@@ -9,6 +9,8 @@ export const SwitchToggleMobile = ({ position, name }) => {
                     className='switch-toggle__input'
                     type='checkbox'
                     id='checkbox-mobile'
+                    onChange={handleCheckbox}
+                    checked={checkboxValue}
                 />
                 <span className='switch-toggle__slider'></span>
             </label>
