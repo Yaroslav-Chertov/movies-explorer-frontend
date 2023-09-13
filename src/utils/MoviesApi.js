@@ -6,16 +6,10 @@ class MoviesApi {
     };
 
     _getJson(res) {
-        {
-            if (res.ok) {
-                return res.json();
-            }
-            console.log(`Ошибка: код ${res.status}`);
-            return res.text().then((text) => {
-                let errorText = JSON.parse(text);
-                return Promise.reject(errorText.message);
-            });
-        };
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(res.status);
     };
 
     getMovies() {

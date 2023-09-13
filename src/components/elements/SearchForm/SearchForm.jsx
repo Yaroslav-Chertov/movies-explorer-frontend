@@ -54,7 +54,7 @@ export const SearchForm = ({
                                 className='search__input'
                                 type='text'
                                 name='search'
-                                placeholder='Поиск'
+                                placeholder='Фильм'
                                 value={inputSearchForm}
                                 onChange={handleInputChange}
                                 required
@@ -80,7 +80,7 @@ export const SearchForm = ({
                         />
 
                         {!inputSearchForm && !inputText && (
-                            <p className='search__error'>Введите ключевое слово</p>
+                            <span className='search__error'></span>
                         )}
                     </form>
                 </div>

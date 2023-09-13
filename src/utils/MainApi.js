@@ -7,29 +7,24 @@ class Api {
         this._MOVIES_IMAGE_URL = MOVIES_IMAGE_URL;
     };
 
-    _getToken() {
-        const token = localStorage.getItem('jwt');
-        return token;
-    };
-
-    _getHeaders() {
-        return {
-            'Content-Type': 'application/json',
-            authorization: this._getToken(),
-        };
-    };
+    // _getJson(res) {
+    //     {
+    //         if (res.ok) {
+    //             return res.json();
+    //         }
+    //         console.log(`Ошибка: код ${res.status}`);
+    //         return res.text().then((text) => {
+    //             let errorText = JSON.parse(text);
+    //             return Promise.reject(errorText.message);
+    //         });
+    //     };
+    // };
 
     _getJson(res) {
-        {
-            if (res.ok) {
-                return res.json();
-            }
-            console.log(`Ошибка: код ${res.status}`);
-            return res.text().then((text) => {
-                let errorText = JSON.parse(text);
-                return Promise.reject(errorText.message);
-            });
-        };
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(res.status);
     };
 
     _request(url, options) {
@@ -39,7 +34,10 @@ class Api {
     sendUser(data) {
         const promise = fetch(`${this._URL}/users/me`, {
             method: 'PATCH',
-            headers: this._getHeaders(),
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+            },
             body: JSON.stringify({
                 name: data.name,
                 email: data.email,
@@ -49,10 +47,14 @@ class Api {
     };
 
     getSavedMovies() {
-        const promise = fetch(`${this._URL}/movies`, {
-            headers: this._getHeaders(),
-        });
-        return promise.then(this._getJson);
+        return fetch(`${BASE_URL}/movies`, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+            },
+        })
+            .then(this._getJson);
     };
 
     sendMovies(data, email) {
@@ -80,7 +82,10 @@ class Api {
     deleteMovies(id) {
         const promise = fetch(`${this._URL}/movies/${id}`, {
             method: 'DELETE',
-            headers: this._getHeaders(),
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+            },
         });
         return promise.then(this._getJson);
     };

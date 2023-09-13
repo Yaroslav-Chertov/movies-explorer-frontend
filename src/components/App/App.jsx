@@ -11,7 +11,7 @@ import { Movies } from '../pages/Movies';
 import { SavedMovies } from '../pages/SavedMovies';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import MainApi from '../../utils/MainApi.js';
-import moviesApi from '../../utils/MoviesApi.js';
+import MoviesApi from '../../utils/MoviesApi.js';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import ProtectedRouteLoggedIn from '../ProtectedRouteLoggedIn/ProtectedRouteLoggedIn';
 
@@ -32,15 +32,12 @@ const App = () => {
     const isMoviesPage = window.location.pathname === '/movies';
     const isSavedMoviesPage = window.location.pathname === '/saved-movies';
 
-    useEffect(() => {
-        setProfileChanged(false);
-    }, [isProfilePage]);
-
+    //проверить токен
     useEffect(() => {
         if (jwt) {
             Promise.all([
                 Auth.getUserData(jwt),
-                moviesApi.getMovies(),
+                MoviesApi.getMovies(),
                 MainApi.getSavedMovies(),
             ])
                 .then(([userData, apiMovies, savedMovies]) => {
@@ -57,15 +54,40 @@ const App = () => {
         }
     }, [jwt]);
 
+    //сохранить фильм
+    const saveMovie = (movieData, email) => {
+        MainApi.sendMovies(movieData, email)
+            .then((likedMovie) => {
+                setSavedMoviesList([likedMovie.data, ...savedMoviesList].reverse());
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    // удалить фильм
+    const deleteMovie = (id) => {
+        MainApi.deleteMovies(id)
+            .then(() => {
+                setSavedMoviesList((savedMovies) =>
+                    savedMovies.filter((c) => c._id !== id)
+                );
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    };
+
+    //регистрация
     const registerUser = (name, password, email) => {
         Auth.registerUser(name, password, email)
             .then((res) => {
                 Auth.authorizeUser(password, email)
                     .then((res) => {
-                        localStorage.setItem('jwt', res.token);
+                        localStorage.setItem("jwt", res.token);
                         setIsLoggedIn(true);
                         setTokenExist(true);
-                        navigate('/movies');
+                        navigate("/movies");
                     })
                     .catch((err) => {
                         console.log(err);
@@ -82,13 +104,14 @@ const App = () => {
             });
     };
 
+    //войти
     const loginUser = (email, password) => {
         Auth.authorizeUser(email, password)
             .then((res) => {
-                localStorage.setItem('jwt', res.token);
+                localStorage.setItem("jwt", res.token);
                 setIsLoggedIn(true);
                 setTokenExist(true);
-                navigate('/movies');
+                navigate("/movies");
             })
             .catch((err) => {
                 console.log(err);
@@ -98,16 +121,18 @@ const App = () => {
             });
     };
 
+    //выйти
     const logOut = () => {
-        localStorage.removeItem('jwt');
-        localStorage.removeItem('movies');
-        localStorage.removeItem('foundMovies');
-        localStorage.removeItem('inputValue');
-        localStorage.removeItem('checkboxValue');
+        localStorage.removeItem("jwt");
+        localStorage.removeItem("movies");
+        localStorage.removeItem("foundMovies");
+        localStorage.removeItem("inputValue");
+        localStorage.removeItem("checkboxValue");
         setIsLoggedIn(false);
-        navigate('/');
+        navigate("/");
     };
 
+    //обновить данные юзера
     const updateUser = (form) => {
         setIsLoading(true);
         MainApi.sendUser(form)
@@ -126,27 +151,11 @@ const App = () => {
             });
     };
 
-    const saveMovie = (movieData, email) => {
-        MainApi.sendMovies(movieData, email)
-            .then((likedMovie) => {
-                setSavedMoviesList([likedMovie.data, ...savedMoviesList].reverse());
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
+    //скрыть уведомление о смене данных пользователя
+    useEffect(() => {
+        setProfileChanged(false);
+    }, [isProfilePage]);
 
-    const deleteMovie = (id) => {
-        MainApi.deleteMovies(id)
-            .then(() => {
-                setSavedMoviesList((savedMovies) =>
-                    savedMovies.filter((c) => c._id !== id)
-                );
-            })
-            .catch((err) => {
-                console.error(err);
-            });
-    };
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
