@@ -6,7 +6,7 @@
 
 ## Pull Request
 
-Тут будет ссылка
+<https://github.com/Yaroslav-Chertov/movies-explorer-frontend/pull/2>
 
 ## Ссылки на проект
 

@@ -26,8 +26,8 @@ export const ProfileForm = ({ logOut, updateUser, errorMessage, setErrorMessage,
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(form)
-        console.log(currentUser.data)
+        // console.log(form)
+        // console.log(currentUser.data)
         updateUser(form);
     };
 
