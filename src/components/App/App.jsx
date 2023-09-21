@@ -137,8 +137,7 @@ const App = () => {
         setIsLoading(true);
         MainApi.sendUser(form)
             .then((resp) => {
-                setCurrentUser(resp);
-                setProfileChanged(true);
+                setCurrentUser((prev) => ({ ...prev, data: resp }))
             })
             .catch((err) => {
                 console.log(err);
