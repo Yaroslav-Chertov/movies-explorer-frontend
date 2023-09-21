@@ -7,7 +7,7 @@ export const useForm = (inputValues) => {
     const [isValid, setIsValid] = useState(false);
 
     const handleChange = (e) => {
-        const { value, name } = e.target;
+        const { name, value } = e.target;
 
         if (name === 'email') {
             const customError = !isEmail(value)

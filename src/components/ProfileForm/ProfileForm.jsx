@@ -12,17 +12,17 @@ export const ProfileForm = ({ logOut, updateUser, errorMessage, setErrorMessage,
     const [isChangedValues, setIsChangedValues] = useState(false);
 
     const { form, handleChange, errors, isValid } = useForm({
-        name: currentUser.name,
-        email: currentUser.email,
+        name: currentUser.data.name,
+        email: currentUser.data.email,
     });
 
     useEffect(() => {
-        if (currentUser.name === form.name && currentUser.email === form.email) {
+        if (currentUser.data.name === form.name && currentUser.data.email === form.email) {
             setIsChangedValues(true);
         } else {
             setIsChangedValues(false);
         }
-    }, [form, currentUser.name, currentUser.email]);
+    }, [form, currentUser.data.name, currentUser.data.email]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -41,7 +41,7 @@ export const ProfileForm = ({ logOut, updateUser, errorMessage, setErrorMessage,
 
     return (
         <section className='profile'>
-            <h1 className='profile__greeting'>{`Привет, ${currentUser.name}!`}</h1>
+            <h1 className='profile__greeting'>{`Привет, ${currentUser.data.name}!`}</h1>
 
             <form className='profile__form' action='#' onSubmit={handleSubmit}>
                 <label className='profile__label' htmlFor='input-name'>

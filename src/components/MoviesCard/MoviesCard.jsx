@@ -23,7 +23,7 @@ export const MoviesCard = ({ movie, savedMoviesList, saveMovie, deleteMovie }) =
             deleteMovie(movie._id);
         } else {
             if (!isLiked) {
-                saveMovie(movie, currentUser.email);
+                saveMovie(movie, currentUser.data.email);
                 setIsLiked(true);
             } else {
                 deleteMovie(savedMovie);
@@ -49,16 +49,9 @@ export const MoviesCard = ({ movie, savedMoviesList, saveMovie, deleteMovie }) =
                         {movie.duration > 60 ? timeЕranslation() : `${movie.duration} мин`}
                     </p>
                 </div>
-                <button
-                    className={`movies-cards__favourite ${isLiked ? 'movies-cards__favourite_active' : ''
-                        } ${isSavedMoviesPage ? 'movies-cards__favourite_saved' : ''
-                        }  hover-link`}
-                    aria-label='Добавить фильм в избранное'
-                    onClick={handleSaveOrDeleteMovie}
-                ></button>
             </div>
             <a
-                className='movies-cards__link hover-link'
+                className='movies-cards__link'
                 target='_blank'
                 rel='noreferrer'
                 href={movie.trailerLink}
@@ -73,6 +66,13 @@ export const MoviesCard = ({ movie, savedMoviesList, saveMovie, deleteMovie }) =
                     alt='Обложка фильма'
                 />
             </a>
+            <button
+                className={`movies-cards__favourite ${isLiked ? 'movies-cards__favourite_active' : ''
+                    } ${isSavedMoviesPage ? 'movies-cards__favourite_saved' : ''
+                    }  hover-link`}
+                aria-label='Добавить фильм в избранное'
+                onClick={handleSaveOrDeleteMovie}
+            >Сохранить</button>
         </li>
     );
 };

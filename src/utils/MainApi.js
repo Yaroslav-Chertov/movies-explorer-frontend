@@ -7,19 +7,6 @@ class Api {
         this._MOVIES_IMAGE_URL = MOVIES_IMAGE_URL;
     };
 
-    // _getJson(res) {
-    //     {
-    //         if (res.ok) {
-    //             return res.json();
-    //         }
-    //         console.log(`Ошибка: код ${res.status}`);
-    //         return res.text().then((text) => {
-    //             let errorText = JSON.parse(text);
-    //             return Promise.reject(errorText.message);
-    //         });
-    //     };
-    // };
-
     _getJson(res) {
         if (res.ok) {
             return res.json();
@@ -57,27 +44,52 @@ class Api {
             .then(this._getJson);
     };
 
-    sendMovies(data, email) {
-        const promise = fetch(`${this._URL}/movies`, {
+    // sendMovies(data, email) {
+    //     const promise = fetch(`${this._URL}/movies`, {
+    //         method: 'POST',
+    //         headers: this._getHeaders(),
+    //         body: JSON.stringify({
+    //             country: data.country,
+    //             director: data.director,
+    //             duration: data.duration,
+    //             year: data.year,
+    //             description: data.description,
+    //             image: `${this._MOVIES_IMAGE_URL}${data.image.url}`,
+    //             trailerLink: data.trailerLink,
+    //             nameEN: data.nameEN,
+    //             nameRU: data.nameRU,
+    //             thumbnail: `${this._MOVIES_URL}data.image.formats.thumbnail.url`,
+    //             movieId: data.id,
+    //             owner: email,
+    //         }),
+    //     });
+    //     return promise.then(this._getJson);
+    // };
+
+    sendMovies(movie) {
+        return fetch(`${BASE_URL}/movies`, {
             method: 'POST',
-            headers: this._getHeaders(),
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+            },
             body: JSON.stringify({
-                country: data.country,
-                director: data.director,
-                duration: data.duration,
-                year: data.year,
-                description: data.description,
-                image: `${this._MOVIES_IMAGE_URL}${data.image.url}`,
-                trailerLink: data.trailerLink,
-                nameEN: data.nameEN,
-                nameRU: data.nameRU,
-                thumbnail: `${this._MOVIES_URL}data.image.formats.thumbnail.url`,
-                movieId: data.id,
-                owner: email,
+                country: movie.country,
+                director: movie.director,
+                duration: movie.duration,
+                year: movie.year,
+                description: movie.description,
+                image: "https://api.nomoreparties.co" + movie.image.url,
+                trailerLink: movie.trailerLink,
+                thumbnail:
+                    "https://api.nomoreparties.co" + movie.image.formats.thumbnail.url,
+                movieId: movie.id,
+                nameRU: movie.nameRU,
+                nameEN: movie.nameEN,
             }),
-        });
-        return promise.then(this._getJson);
-    };
+        })
+            .then(this._getJson);
+    }
 
     deleteMovies(id) {
         const promise = fetch(`${this._URL}/movies/${id}`, {
