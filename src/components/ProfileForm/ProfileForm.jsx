@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import { useForm } from '../../hooks/useFormValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-export const ProfileForm = ({ logOut, updateUser, errorMessage, setErrorMessage, profileChanged, setProfileChanged }) => {
+export const ProfileForm = ({ logOut, updateUser, errorMessage, setErrorMessage, profileChanged, setProfileChanged, }) => {
     const currentUser = useContext(CurrentUserContext);
     const [nameDisabled, setNameDisabled] = useState(true);
     const [emailDisabled, setEmailDisabled] = useState(true);
@@ -26,8 +26,6 @@ export const ProfileForm = ({ logOut, updateUser, errorMessage, setErrorMessage,
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(form)
-        // console.log(currentUser.data)
         updateUser(form);
     };
 
