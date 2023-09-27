@@ -9,6 +9,13 @@ const SHOW_MORE_768 = 3;
 const SHOW_MORE_480 = 2;
 const SHORT_MOVIE = 40;
 
+export const NAME_REGEX = /^[a-zа-яё\-\s]+$/i;
+export const MESSAGES = {
+    NAME_ERROR:
+        "Имя должно содержать только латиницу, кириллицу, пробел и/или дефис.",
+    EMAIL_ERROR: "Некорректный email",
+};
+
 export {
     BASE_URL,
     MOVIES_URL,

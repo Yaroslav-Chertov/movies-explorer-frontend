@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 
-export const MoviesCard = ({ movie, savedMoviesList, saveMovie, deleteMovie }) => {
+export const MoviesCard = ({ movie, savedMoviesList, saveMovie, deleteMovie, }) => {
     const currentUser = useContext(CurrentUserContext);
     const [savedMovie, setSavedMovie] = useState();
     const [isLiked, setIsLiked] = useState(false);
