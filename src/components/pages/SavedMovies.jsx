@@ -6,7 +6,7 @@ import { SearchForm } from '../elements/SearchForm/SearchForm';
 import { MoviesCardList } from '../MoviesCardList/MoviesCardList';
 import { Footer } from '../Footer/Footer';
 
-export const SavedMovies = ({ isLoggedIn, savedMoviesList, deleteMovie }) => {
+export const SavedMovies = ({ isLoggedIn, savedMoviesList, deleteMovie, }) => {
     const [likedMovies, setLikedMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [unsuccessfulSearch, setUnsuccessfulSearch] = useState('');
@@ -39,7 +39,6 @@ export const SavedMovies = ({ isLoggedIn, savedMoviesList, deleteMovie }) => {
                 } else {
                     setUnsuccessfulSearch('');
                 }
-
                 setLikedMovies(movies);
             } else {
                 const movies = await savedMoviesList.filter((movie) => {
@@ -48,8 +47,10 @@ export const SavedMovies = ({ isLoggedIn, savedMoviesList, deleteMovie }) => {
                         movie.nameEN.toLowerCase().includes(inputValue)
                     );
                 });
-
                 setLikedMovies(movies);
+                // тут условие добавить?
+                // setLikedMovies(savedMoviesList);
+                
             }
         } catch (err) {
             console.log(err);

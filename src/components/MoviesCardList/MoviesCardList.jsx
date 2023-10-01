@@ -5,7 +5,7 @@ import { Preloader } from '../Preloader/Preloader';
 import { MoreButton } from '../Interface/MoreButton/MoreButton';
 import { MOVIES_LIST_1280, MOVIES_LIST_480, SHOW_MORE_768, SHOW_MORE_480 } from '../../utils/constants';
 
-export const MoviesCardList = ({ movies, unsuccessfulSearch, searchError, loading, savedMoviesList, saveMovie, deleteMovie }) => {
+export const MoviesCardList = ({ movies, unsuccessfulSearch, searchError, loading, savedMoviesList, saveMovie, deleteMovie, }) => {
     const isSavedMoviesPage = window.location.pathname === '/saved-movies';
     const isMoviesPage = window.location.pathname === '/movies';
     const [showMovies, setShowMovies] = useState(0);

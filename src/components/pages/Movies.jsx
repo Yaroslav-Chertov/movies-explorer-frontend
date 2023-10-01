@@ -40,6 +40,7 @@ export const Movies = ({ isLoggedIn, apiMoviesList, savedMoviesList, saveMovie, 
     const handleSearchMovies = async (inputValue, checkbox) => {
         setLoading(true);
         await timeout(1500);
+        
         try {
             const result = await searchMovies(apiMoviesList, inputValue, checkbox);
 

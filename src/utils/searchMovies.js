@@ -13,6 +13,8 @@ const searchMovies = (moviesList, inputValue, checkbox) => {
                     movie.description.toLowerCase().includes(inputValue)) &
                 (movie.duration < SHORT_MOVIE)
             );
+            // тут условие добавить?
+            
         } else {
             return (
                 movie.nameRU.toLowerCase().includes(inputValue) ||

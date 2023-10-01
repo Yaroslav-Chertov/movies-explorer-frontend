@@ -25,6 +25,7 @@ const App = () => {
     const [tokenExist, setTokenExist] = useState(true);
     const [apiMoviesList, setApiMoviesList] = useState([]);
     const [savedMoviesList, setSavedMoviesList] = useState([]);
+
     const jwt = localStorage.getItem('jwt');
     const isSignupPage = window.location.pathname === '/signup';
     const isLoginPage = window.location.pathname === '/signin';

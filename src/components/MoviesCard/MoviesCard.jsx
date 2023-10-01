@@ -24,10 +24,10 @@ export const MoviesCard = ({ movie, savedMoviesList, saveMovie, deleteMovie, }) 
         } else {
             if (!isLiked) {
                 saveMovie(movie, currentUser.data.email);
-                setIsLiked(true);
+                // setIsLiked(true);
             } else {
                 deleteMovie(savedMovie);
-                setIsLiked(false);
+                 setIsLiked(false);
             }
         }
     };
