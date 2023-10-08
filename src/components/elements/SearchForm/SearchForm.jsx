@@ -19,7 +19,7 @@ export const SearchForm = ({
     const handleSubmit = (e) => {
         e.preventDefault();
         if (isSavedMoviesPage) {
-            console.log('saved page');
+            // console.log('saved page');
             filterSavedMovies(inputText.toLowerCase(), checkboxShortMovies);
         } else {
             handleSearchMovies(inputSearchForm, checkboxValue);
