@@ -13,17 +13,17 @@
 * проработаны авторизованные и неавторизованные состояния, сохранение фильмов в профиле;
 * полученные фильмы фильтруются на стороне клиента.
 
-Инструменты и стек: 
-*HTML
-*CSS
-*React
-*Express
-*MongoDB
-*NodeJS
-*API
-*Nginx
-*JWT
-*Postman
+Инструменты и стек:
+* HTML
+* CSS
+* React
+* Express
+* MongoDB
+* NodeJS
+* API
+* Nginx
+* JWT
+* Postman
 
 Макет Figma: <https://disk.yandex.ru/d/9hDLSiyUWC9TiA>
 
