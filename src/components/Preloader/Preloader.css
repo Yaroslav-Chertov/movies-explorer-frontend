@@ -49,10 +49,8 @@
     width: 100%;
     height: 100%;
     z-index: 10;
-    top: 0;
-    left: 0;
-    position: fixed;
-    display: none;
+    padding: 20px;
+    margin: auto 0;
 }
 
 .preloader__container {
@@ -67,13 +65,13 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #202020;
+    background: #3DDC84;
     border-radius: 50px;
 }
 
 .preloader__round::after,
 .preloader__round::before {
-    content: '';
+    content: "";
     width: 100px;
     height: 100px;
     position: absolute;
@@ -83,12 +81,12 @@
 }
 
 .preloader__round::after {
-    background: #3DDC84;
+    background: white;
     animation: preloader-inside-white 1s ease-in-out infinite;
 }
 
 .preloader__round::before {
     z-index: 10;
-    background: #202020;
+    background: #3DDC84;
     animation: preloader-inside-red 1s ease-in-out infinite;
 }

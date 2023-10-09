@@ -29,6 +29,17 @@
     margin: 0 auto;
 }
 
+.movies-cards__message {
+    color: #8b8b8b;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: normal;
+    height: 100%;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+}
+
 @media screen and (max-width: 992px) {
     .movies-cards__list {
         grid-template-columns: repeat(2, 1fr);

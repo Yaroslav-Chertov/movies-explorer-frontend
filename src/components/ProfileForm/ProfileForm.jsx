@@ -1,39 +1,142 @@
-import React from 'react';
+import { useContext, useState, useEffect } from "react";
+import { useForm } from "../../hooks/useFormValidation";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-export const ProfileForm = () => {
-    return (
-        <section className='profile'>
-            <h1 className='profile__greeting'>Привет, Виталий!</h1>
+export const ProfileForm = ({
+  logOut,
+  updateUser,
+  errorMessage,
+  setErrorMessage,
+  profileChanged,
+  setProfileChanged,
+}) => {
+  const currentUser = useContext(CurrentUserContext);
+  const [nameDisabled, setNameDisabled] = useState(true);
+  const [emailDisabled, setEmailDisabled] = useState(true);
+  const [buttonSubmitForm, setButtonSubmitForm] = useState(false);
+  const [buttonEditForm, setButtonEditForm] = useState(true);
+  const [buttonLogout, setbuttonLogout] = useState(true);
+  const [isChangedValues, setIsChangedValues] = useState(false);
 
-            <form className='profile__form' action='#'>
-                <label className='profile__label' htmlFor='input-name'>
-                    Имя
-                    <input
-                        className='profile__input'
-                        type='text'
-                        name='input-name'
-                        id='input-name'
-                        placeholder='Виталий'
-                    />
-                </label>
+  const { form, handleChange, errors, isValid } = useForm({
+    name: currentUser.data.name,
+    email: currentUser.data.email,
+  });
 
-                <label className='profile__label' htmlFor='input-email'>
-                    E-mail
-                    <input
-                        className='profile__input'
-                        type='email'
-                        name='input-email'
-                        id='input-email'
-                        placeholder='pochta@yandex.ru'
-                    />
-                </label>
+  useEffect(() => {
+    if (
+      currentUser.data.name === form.name &&
+      currentUser.data.email === form.email
+    ) {
+      setIsChangedValues(true);
+    } else {
+      setIsChangedValues(false);
+    }
+  }, [form, currentUser.data.name, currentUser.data.email]);
 
-                <button className='profile__edit hover-link' type='submit'>
-                    Редактировать
-                </button>
-            </form>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateUser(form);
+  };
 
-            <button className='profile__logout hover-link'>Выйти из аккаунта</button>
-        </section>
-    );
+  const handleEdit = () => {
+    setButtonSubmitForm(true);
+    setNameDisabled(false);
+    setEmailDisabled(false);
+    setButtonEditForm(false);
+    setbuttonLogout(false);
+    setErrorMessage("");
+    setProfileChanged("");
+  };
+
+  return (
+    <section className="profile">
+      <h1 className="profile__greeting">{`Привет, ${currentUser.data.name}!`}</h1>
+
+      <form className="profile__form" action="#" onSubmit={handleSubmit}>
+        <label className="profile__label" htmlFor="input-name">
+          Имя
+          <input
+            className="profile__input"
+            type="text"
+            name="name"
+            id="input-name"
+            placeholder="Имя"
+            minLength="2"
+            maxLength="20"
+            disabled={nameDisabled}
+            value={form.name || ""}
+            onChange={handleChange}
+          />
+          {errors.name && (
+            <span className="profile__input-error input-error">
+              {errors.name}
+            </span>
+          )}
+        </label>
+
+        <label className="profile__label" htmlFor="input-email">
+          E-mail
+          <input
+            className="profile__input"
+            type="email"
+            name="email"
+            id="input-email"
+            placeholder="Почта"
+            value={form.email || ""}
+            minLength="5"
+            maxLength="30"
+            disabled={emailDisabled}
+            onChange={handleChange}
+            pattern="([A-zА-я])+([0-9\-_\+\.])*([A-zА-я0-9\-_\+\.])*@([A-zА-я])+([0-9\-_\+\.])*([A-zА-я0-9\-_\+\.])*[\.]([A-zА-я])+"
+          />
+          {errors.email && (
+            <span className="profile__input-error input-error ">
+              {errors.email}
+            </span>
+          )}
+        </label>
+
+        {profileChanged && (
+          <div className="profile__message">Данные успешно изменены!</div>
+        )}
+
+        <button
+          className={`profile__edit ${
+            !buttonEditForm ? "profile__edit_hidden" : "hover-link"
+          } `}
+          type="button"
+          onClick={handleEdit}
+        >
+          {" "}
+          Редактировать
+        </button>
+
+        {errorMessage !== "" ? (
+          <p className="profile__error">{errorMessage}</p>
+        ) : (
+          ""
+        )}
+
+        <button
+          className={`profile__submit ${
+            !isValid || isChangedValues ? "profile__submit_disabled" : ""
+          } ${!buttonSubmitForm ? "profile__submit_hidden" : "hover-link"} `}
+          disabled={!isValid}
+          type="submit"
+        >
+          Сохранить
+        </button>
+      </form>
+
+      <button
+        className={`profile__logout ${
+          !buttonLogout ? "profile__logout_hidden" : "hover-link"
+        }  `}
+        onClick={logOut}
+      >
+        Выйти из аккаунта
+      </button>
+    </section>
+  );
 };

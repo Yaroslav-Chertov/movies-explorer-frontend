@@ -67,6 +67,13 @@
     font-size: 14px;
     margin-bottom: 16px;
     padding: 13px 5px 15px 5px;
+    border: none;
+    outline: none;
+}
+
+.main-form__submit_disabled {
+    background-color: #f8f8f8;
+    cursor: not-allowed;
 }
 
 .main-form__answer {
