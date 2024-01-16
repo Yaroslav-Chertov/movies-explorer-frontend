@@ -30,11 +30,3 @@
 ## Pull Request
 
 <https://github.com/Yaroslav-Chertov/movies-explorer-frontend/pull/2>
-
-## Ссылки на проект
-
-IP 51.250.89.181
-
-Frontend <https://yaroslav.movies.nomoredomains.xyz>
-
-Backend <https://api.yaroslav.movies.nomoredomains.xyz>
