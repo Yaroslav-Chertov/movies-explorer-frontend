@@ -25,8 +25,6 @@
 * JWT
 * Postman
 
-Макет Figma: <https://disk.yandex.ru/d/9hDLSiyUWC9TiA>
-
 ## Pull Request
 
 <https://github.com/Yaroslav-Chertov/movies-explorer-frontend/pull/2>
