@@ -1,5 +1,5 @@
-const BASE_URL = 'https://api.yaroslav.movies.nomoredomains.xyz';
-// const BASE_URL = 'http://localhost:3000';
+//const BASE_URL = 'https://api.yaroslav.movies.nomoredomains.xyz';
+const BASE_URL = 'http://localhost:3000';
 const MOVIES_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 const MOVIES_IMAGE_URL = 'https://api.nomoreparties.co';
 
