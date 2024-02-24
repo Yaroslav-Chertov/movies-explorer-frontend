@@ -1,6 +1,8 @@
 # movies-explorer-frontend
 
-Репозиторий для Дипломного проекта `Movies-explorer`, включающий фронтенд приложения со следующими возможностями: авторизации и регистрации пользователей, операции с фильмами.
+Репозиторий для проекта `Movies-explorer`, включающий фронтенд приложения со следующими возможностями: авторизации и регистрации пользователей, операции с фильмами.
+
+![](./src/images/Screenshot_readme.png)
 
 Что было сделано:
 * настроена инфраструктура и создан сервер на express;
@@ -28,3 +30,16 @@
 ## Pull Request
 
 <https://github.com/Yaroslav-Chertov/movies-explorer-frontend/pull/2>
+
+## Инструкция по установке
+
+```
+git clone https://github.com/Yaroslav-Chertov/movies-explorer-frontend.git
+```
+```
+npm install
+```
+```
+npm start
+```
+
