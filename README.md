@@ -25,7 +25,7 @@ Movies Explorer — fullstack SPA для поиска и сохранения ф
 | Валидация форм | Validator.js |
 | Сборка | Create React App |
 
-**Бэкенд (отдельный репозиторий):**
+**Бэкенд ([отдельный репозиторий] (https://github.com/Yaroslav-Chertov/movies-explorer-api)):**
 
 | Слой | Технология |
 |---|---|
